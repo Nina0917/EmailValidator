@@ -40,5 +40,3 @@ def MXCheck(email = str()) -> tuple:
             if reject.strings == "v=spf1 -all":
                 return None
         return IpList, fallback_record
-
-MXCheck("info@keepamericafishing.org")
