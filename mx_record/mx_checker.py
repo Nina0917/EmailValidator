@@ -40,3 +40,6 @@ def MXCheck(email = str()) -> tuple:
             if reject.strings == "v=spf1 -all":
                 return None
         return IpList, fallback_record
+
+# return_tuple = MXCheck("ma1998.ascii@gmail.com")
+# print(return_tuple)
