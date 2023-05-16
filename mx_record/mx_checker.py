@@ -2,6 +2,10 @@ import dns
 import dns.resolver
 
 def MXCheck(email = str()) -> bool:
+    """
+    This function checks if the mail exchange server exist according to standards of email. Return true
+    if mail exchange server exist and false if not.
+    """
     # Assume Syntax is valid
     name, domain = email.split(sep="@")
     # Run to see if any MX records exist and return all possible MX
