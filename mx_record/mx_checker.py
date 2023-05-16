@@ -1,7 +1,7 @@
 import dns
 import dns.resolver
 
-def MXCheck(email = str()) -> bool:
+def MXCheck(email = str()) -> tuple:
     # Assume Syntax is valid
     name, domain = email.split(sep="@")
     # Run to see if any MX records exist and return all possible MX
@@ -14,26 +14,29 @@ def MXCheck(email = str()) -> bool:
                 del Mx
             print(Mx)
         if len(MXList) != 0:
-            return True
+            return MXList, "MX"
         else:
             # MXRecord Not Found
-            return False
+            return None, ""
 
     except:
         # Attempt to perform fallback measure
+        fallback_record = ""
         try:
             IpList = dns.resolver.resolve(domain, "A")
+            fallback_record = "A"
         except:
             try: 
                 IpList = dns.resolver.resolve(domain, "AAAA")
+                fallback_record = "AAAA"
             except:
                 # MXRecord Not Found
-                return False
+                return None, ""
         for ip in IpList:
                 ip = (0, str(ip))
         # Check for reject all record
         rejectList = dns.resolver.resolve(domain, "TXT")
         for reject in rejectList:
             if reject.strings == "v=spf1 -all":
-                return False
-        return True
+                return None
+        return IpList, fallback_record
