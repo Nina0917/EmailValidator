@@ -25,14 +25,11 @@ def MXCheck(email = str()) -> bool:
 
     except:
         # Attempt to perform fallback measure
-        fallback_record = ""
         try:
             IpList = dns.resolver.resolve(domain, "A")
-            fallback_record = "A"
         except:
             try: 
                 IpList = dns.resolver.resolve(domain, "AAAA")
-                fallback_record = "AAAA"
             except:
                 # MXRecord Not Found
                 return False
