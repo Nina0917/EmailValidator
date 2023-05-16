@@ -1,7 +1,11 @@
 import dns
 import dns.resolver
 
-def MXCheck(email = str()) -> tuple:
+def MXCheck(email = str()) -> bool:
+    """
+    This function checks if the mail exchange server exist according to standards of email. Return true
+    if mail exchange server exist and false if not.
+    """
     # Assume Syntax is valid
     name, domain = email.split(sep="@")
     # Run to see if any MX records exist and return all possible MX
@@ -14,32 +18,26 @@ def MXCheck(email = str()) -> tuple:
                 del Mx
             print(Mx)
         if len(MXList) != 0:
-            return MXList, "MX"
+            return True
         else:
             # MXRecord Not Found
-            return None, ""
+            return False
 
     except:
         # Attempt to perform fallback measure
-        fallback_record = ""
         try:
             IpList = dns.resolver.resolve(domain, "A")
-            fallback_record = "A"
         except:
             try: 
                 IpList = dns.resolver.resolve(domain, "AAAA")
-                fallback_record = "AAAA"
             except:
                 # MXRecord Not Found
-                return None, ""
+                return False
         for ip in IpList:
                 ip = (0, str(ip))
         # Check for reject all record
         rejectList = dns.resolver.resolve(domain, "TXT")
         for reject in rejectList:
             if reject.strings == "v=spf1 -all":
-                return None
-        return IpList, fallback_record
-
-# return_tuple = MXCheck("ma1998.ascii@gmail.com")
-# print(return_tuple)
+                return False
+        return True
