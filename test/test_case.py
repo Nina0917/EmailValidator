@@ -1,7 +1,7 @@
 import unittest
 from utils.mx_checker import MXCheck
 from utils.syntax_checker import SyntaxCheck
-from utils.smtp_checker import check_email_smtp # Doesn't exist yet
+from utils.smtp_checker import check_email_smtp 
 
 class TestClass(unittest.TestCase):
     def testall(self):
