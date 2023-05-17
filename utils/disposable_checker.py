@@ -1,5 +1,5 @@
 
-from disposable import emails
+import emails
 
 class DisposableEmailChecker():
     """
