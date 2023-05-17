@@ -1,7 +1,7 @@
 import unittest
-from mx_record.mx_checker import MXCheck
-from syntax.syntax_checker import SyntaxCheck
-from smtp.smtp_checker import SmtpCheck # Doesn't exist yet
+from utils.mx_checker import MXCheck
+from utils.syntax_checker import SyntaxCheck
+from utils.smtp_checker import check_email_smtp # Doesn't exist yet
 
 class TestClass(unittest.TestCase):
     def testall(self):
@@ -42,7 +42,7 @@ class TestClass(unittest.TestCase):
             True
             ]
         for i in range(length):
-            check = MXCheck(emailList[i]) and SyntaxCheck(emailList[i]) and SmtpCheck(emailList[i])
+            check = MXCheck(emailList[i]) and SyntaxCheck(emailList[i]) and check_email_smtp(emailList[i])
             self.assertEqual(check, result[i])
     
     def testSyntax(self):
