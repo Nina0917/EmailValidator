@@ -6,7 +6,7 @@ import socket
 def check_email_smtp(email):
     max_retries = 3
     retry_delay = 2 
-
+    """Ping the email address via SMTP. Return true if successful and false if not"""
     for _ in range(max_retries):
         try:
             domain = email.split('@')[1]

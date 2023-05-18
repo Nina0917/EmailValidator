@@ -1,4 +1,5 @@
 
+
 import csv
 import sys
 import threading
@@ -7,7 +8,6 @@ from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QHBoxLayout, \
                             QLineEdit, QLabel, QMainWindow, QMessageBox,     \
                             QPushButton, QTableWidgetItem, QVBoxLayout, QWidget, \
                             QTableWidget, QComboBox
-
 from utils.syntax_checker import SyntaxCheck
 from utils.mx_checker import MXCheck
 from utils.smtp_checker import check_email_smtp
