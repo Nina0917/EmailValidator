@@ -68,7 +68,7 @@ class TestClass(unittest.TestCase):
         ]
         length = len(emailList)
         for i in range(length):
-            check = MXCheck(emailList[i])
+            check = SyntaxCheck(emailList[i])
             self.assertEqual(check, result[i])
 
     def MXTest(self):
