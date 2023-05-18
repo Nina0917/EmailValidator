@@ -3,6 +3,7 @@ import dns.resolver
 import socket
 
 def check_email_smtp(email):
+    """Ping the email address via SMTP. Return true if successful and false if not"""
     try:
         domain = email.split('@')[1]
         mx_records = dns.resolver.resolve(domain, 'MX')
