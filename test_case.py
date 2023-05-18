@@ -71,12 +71,12 @@ class TestClass(unittest.TestCase):
             check = SyntaxCheck(emailList[i])
             self.assertEqual(check, result[i])
 
-    def MXTest(self):
+    def testMX(self):
         self.assertEqual(MXCheck("alan.teng2003@gmail.com"), True)
         self.assertEqual(MXCheck("alan@viveveeve.org"), False)
         # Note: Can't find any emails that uses A/AAAA as MX
 
-    def SmtpTest(self):
+    def testSMTP(self):
         # TODO: develop test scenarios for SMTPCheck
         pass
 
