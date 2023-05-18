@@ -16,7 +16,6 @@ def MXCheck(email = str()) -> bool:
             # Delete Null MX records
             if Mx[1] == ".":
                 del Mx
-            print(Mx)
         if len(MXList) != 0:
             return True
         else:

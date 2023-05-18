@@ -1,32 +1,40 @@
 import smtplib
+import time
 import dns.resolver
 import socket
 
 def check_email_smtp(email):
-    try:
-        domain = email.split('@')[1]
-        mx_records = dns.resolver.resolve(domain, 'MX')
-        mx_record = str(mx_records[0].exchange)
-        server = smtplib.SMTP(timeout=120)
-        host = socket.gethostname()
-        server.connect(mx_record)
-        server.helo(host)
-        server.mail('me@outlook.com')
-        code, _ = server.rcpt(email)
-        server.quit()
-        if code == 250:
-            return True
-        return False
-    except (UnicodeError, IndexError, dns.resolver.NoAnswer, dns.resolver.NXDOMAIN, smtplib.SMTPConnectError):
-        return False
+    max_retries = 3
+    retry_delay = 2 
 
-def check_emails_smtp(emails):
-    results = {}
-    for email in emails:
-        results[email] = check_email_smtp(email)
-    return results
-
-# Example usage
-email_list = ["alesiaconover@cox.net", "jwovsndoisjjsdifeh@gmail.com", "ijdasjidjkslkew@cox.net"]
-results = check_emails_smtp(email_list)
-print(results)
+    for _ in range(max_retries):
+        try:
+            domain = email.split('@')[1]
+            mx_records = dns.resolver.resolve(domain, 'MX')
+            mx_record = str(mx_records[0].exchange)
+            server = smtplib.SMTP()
+            host = socket.gethostname()
+            if domain == 'cox.net':
+                server.connect('smtp.{}'.format(domain), 587)
+            else:
+                server.connect(mx_record)
+            server.helo(host)
+            server.mail('me@outlook.com')
+            code, _ = server.rcpt(email)
+            server.quit()
+            print(code)
+            # return code of 503 indicates server temporarily unavailable
+            if code == 250:
+                return True
+            return False
+        except smtplib.SMTPConnectError:
+            # Connection error, retry after delay
+            print("Connection error. Retrying...")
+            time.sleep(retry_delay)
+        except smtplib.SMTPServerDisconnected:
+            # Connection unexpectedly closed, retry after delay
+            print("Connection unexpectedly closed. Retrying...")
+            time.sleep(retry_delay)
+        except (UnicodeError, IndexError, dns.resolver.NoAnswer, dns.resolver.NXDOMAIN):
+            return False
+    return False
