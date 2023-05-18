@@ -3,7 +3,7 @@ import emails
 
 class DisposableEmailChecker():
     """
-    Check if an email is from a disposable email service
+    Check if an email is from a disposable email service.
     """
 
     message = 'Blocked email provider.'
