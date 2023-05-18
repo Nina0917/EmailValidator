@@ -25,7 +25,7 @@ class TestClass(unittest.TestCase):
         ]
         length = len(emailList)
         result = [
-            True, 
+            False, 
             False, 
             False, 
             True, 
@@ -80,6 +80,6 @@ class TestClass(unittest.TestCase):
     def SmtpTest(self):
         # TODO: develop test scenarios for SMTPCheck
         pass
+if __name__ == '__main__':
+    unittest.main()
 
-    if __name__ == '__main__':
-        unittest.main()

@@ -4,7 +4,7 @@ import threading
 from utils.input_parser import parse_csv_file1,parse_csv_file
 from utils.syntax_checker import SyntaxCheck
 from utils.mx_checker import MXCheck
-from utils.smtp_checker import check_emails_smtp
+from utils.smtp_checker import check_emails_smtp,check_email_smtp
 from utils.disposable_checker import DisposableEmailChecker
 from utils import emails
 
@@ -23,7 +23,7 @@ def validate_email(email):
     if not MXCheck(email):
         print(3)
         return False
-    if not check_emails_smtp(email):
+    if not check_email_smtp(email):
         print(4)
         return False
     return True
