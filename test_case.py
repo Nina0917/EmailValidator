@@ -25,6 +25,7 @@ class TestClass(unittest.TestCase):
         ]
         length = len(emailList)
         result = [
+
             True, 
             False, 
             False, 
@@ -48,12 +49,14 @@ class TestClass(unittest.TestCase):
     def testSyntax(self):
         emailList = [
             "alan.teng2003@gmail.com",
+
             "hackathon@zerobounce.net",
             "f.le.an@yahoo.ca",
             ".dowexi5377@aicogz.com",
             "info@advancetravel.gtmail.co.uk",
             "brucelee.@outlook.ca",
             "info@24-7response.org",
+
             "info@24-7_response.org"
         ]
         result = [
@@ -61,6 +64,7 @@ class TestClass(unittest.TestCase):
             True,
             True,
             False,
+
             True,
             False,
             True,
@@ -72,9 +76,11 @@ class TestClass(unittest.TestCase):
             self.assertEqual(check, result[i])
 
     def testMX(self):
+
         self.assertEqual(MXCheck("alan.teng2003@gmail.com"), True)
         self.assertEqual(MXCheck("alan@viveveeve.org"), False)
         # Note: Can't find any emails that uses A/AAAA as MX
+
 
     def testSMTP(self):
         # TODO: develop test scenarios for SMTPCheck
@@ -82,3 +88,4 @@ class TestClass(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
