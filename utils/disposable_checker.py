@@ -21,7 +21,7 @@ class DisposableEmailChecker():
     def is_disposable(self, email):
 
         name, domain = email.split(sep="@")
-        if domain in email_domain_loader:
+        if domain in email_domain_loader():
             return False
         else:
             return True
