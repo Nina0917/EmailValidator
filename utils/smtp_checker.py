@@ -7,7 +7,7 @@ def check_email_smtp(email):
         domain = email.split('@')[1]
         mx_records = dns.resolver.resolve(domain, 'MX')
         mx_record = str(mx_records[0].exchange)
-        server = smtplib.SMTP()
+        server = smtplib.SMTP(timeout=120)
         host = socket.gethostname()
         server.connect(mx_record)
         server.helo(host)
@@ -26,7 +26,7 @@ def check_emails_smtp(emails):
         results[email] = check_email_smtp(email)
     return results
 
-# # Example usage
-# email_list = ["example1@example.com", "jwovsndoisjjsdifeh@gmail.com", "example3@example.com"]
-# results = check_emails_smtp(email_list)
-# print(results)
+# Example usage
+email_list = ["alesiaconover@cox.net", "jwovsndoisjjsdifeh@gmail.com", "ijdasjidjkslkew@cox.net"]
+results = check_emails_smtp(email_list)
+print(results)
