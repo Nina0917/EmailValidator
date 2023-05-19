@@ -4,7 +4,7 @@ import dns.resolver
 import socket
 
 def check_email_smtp(email):
-    max_retries = 3
+    max_retries = 2
     retry_delay = 2 
     """Ping the email address via SMTP. Return true if successful and false if not"""
     for _ in range(max_retries):
@@ -13,17 +13,12 @@ def check_email_smtp(email):
             mx_records = dns.resolver.resolve(domain, 'MX')
             mx_record = str(mx_records[0].exchange)
             server = smtplib.SMTP()
-            host = socket.gethostname()
-            if domain == 'cox.net':
-                server.connect('smtp.{}'.format(domain), 587)
-            else:
-                server.connect(mx_record)
-            server.helo(host)
+            host = '127.0.0.1'
+            server.connect(mx_record)
+            server.ehlo(host)
             server.mail('me@outlook.com')
             code, _ = server.rcpt(email)
             server.quit()
-            print(code)
-            # return code of 503 indicates server temporarily unavailable
             if code == 250:
                 return True
             return False

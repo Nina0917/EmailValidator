@@ -854,7 +854,6 @@ def email_domain_loader():
         'qasti.com',
         'qisdo.com',
         'qisoa.com',
-        'qq.com',
         'quantentunnel.de',
         'quickinbox.com',
         'quickmail.nl',
