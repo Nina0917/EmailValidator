@@ -88,6 +88,13 @@ def read_csv_to_dict(file_path):
     return dictionary
 
 def validate_email(email):
+    """
+    validate_email:
+    this method is a helper function of process chunk to check the validation of the email.
+    input: email address
+    output: Boolean
+    """
+
     if not SyntaxCheck(email):
         return False
     elif not DisposableEmailChecker().is_disposable(email):
