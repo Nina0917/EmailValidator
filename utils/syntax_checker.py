@@ -1,4 +1,5 @@
 import re
+from gibberish_detector import detector
 
 def SyntaxCheck(email = str()) -> bool:
     """
@@ -9,6 +10,8 @@ def SyntaxCheck(email = str()) -> bool:
     output: boolean
 
     """
-    if re.match(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email):
-        return True
-    return False
+    if not re.match(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', email):
+        return False
+    Detector = detector.create_from_model('./data/big.model')
+    return not Detector.is_gibberish(email.split('@')[0])
+    
