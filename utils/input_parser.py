@@ -1,5 +1,11 @@
 import csv
-"""input small file """
+"""
+parse_csv_file:
+this method parse the input csv file to a dictionary of emails, with default value "invalid"
+input: file path
+output: dictionary
+ """
+
 def parse_csv_file(filename):
     data = {}
     
@@ -8,18 +14,23 @@ def parse_csv_file(filename):
         for row in reader:
             email = row[0]
             validity = row[1]
-            data[email] = "invalid"
+            data[email] = "Invalid"
     
     return data
 
-"""input large file and all email default invalid"""
+"""
+parse_csv_file1:
+this method parse the input csv file to a dictionary of emails, with default value "invalid"
+input: file path
+output: dictionary
+ """
 def parse_csv_file1(filename):
     data = {}
     with open(filename, 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             email = row[0]
-            data[email] = "invalid"
+            data[email] = "Invalid"
 
     return data
 
