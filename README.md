@@ -15,7 +15,7 @@ There are two versions available for running the EmailValidator tool: an executa
 Additionally, you need to install the required packages by running the following command:
 
 ```python
-$  pip install -r /path/to/requirements.txt
+$  pip install -r requirements.txt
 ```
 
 ### Google Colab Version
