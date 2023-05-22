@@ -10,10 +10,11 @@ def check_email_smtp(email):
     for _ in range(max_retries):
         try:
             domain = email.split('@')[1]
-            mx_records = dns.resolver.resolve(domain, 'MX')
+            mx_records = dns.resolver.resolve(domain, 'MX', tcp=True, lifetime=90)
             mx_record = str(mx_records[0].exchange)
             server = smtplib.SMTP()
-            host = '127.0.0.1'
+            host = socket.gethostname()
+            time.sleep(1)
             server.connect(mx_record)
             server.ehlo(host)
             server.mail('me@outlook.com')

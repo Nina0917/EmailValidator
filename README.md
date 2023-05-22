@@ -6,42 +6,37 @@ The software gives requires an email address or a list of them. For each email, 
 
 ## Usage
 
-
+You can either double click on the Email Validator.exe application, or run main.py. The program will shows a GUI. Browse for the email list \(need to be in .csv format\) that you want to validate and enjoy!
 
 ### Installation
 
-In order to use this tool, you need to have Python 3.0 or later installed.
+No installation is required for running EmailValidator.exe.
 
-You will need Flask, which can be installed using pip:
+To run the Python script version of the application, you need to have Python 3.0 or later installed on your system.
 
-```python
-$ pip install -U Flask
-```
-
-You also need to install a DNS toolkit for Python
+Additionally, you need to install the required packages by running the following command:
 
 ```python
-$ pip install dnspython
-```
-
-Last, install PyQt5 to run the GUI
-
-```python
-$ pip install PyQt5
+$ pip install -r requirements. txt
 ```
 
 ### Overview
 
+- `syntax_checker.py` - A function that checks if the email is in the correct format
 - `disposable_checker.py` - Checks if the email is part of one of the many domains where temporaily emails are created.
 - `mx_checker.py` - A function that checks for the domain's MX record
 - `smtp_checker.py` - A function that checks if email is valid via SMTP connection
-- `syntax_checker.py` - A function that checks if the email is in the correct format
 
 ---
 
 - `input_parser.py` - turns the input from the GUI to python variable for python scripts
 - `test_case.py` - a list of test cases for the software
 
-### Quick Start
-Run main.py and it will shows a GUI. Drag the email list that you want to validate and enjoy!
+## Potential Improvements
 
+Here are some potential improvements that could be considered for future development:
+
+1. Reduce block by SMTP email servers thus improve accuracy.
+2. Improve the accuracy of gibberish checking by expanding training dataset.
+3. Optimize the multithreading functionality to maximize processing speed while maintaining stability.
+4. Support additional input formats.
