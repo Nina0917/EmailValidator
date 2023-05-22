@@ -1,36 +1,32 @@
 # EmailValidator
 
-A email syntax and deliverability validator written in Python. Validates syntax, disposable, dns and smtp.
+EmailValidator is a Python-based software tool that validates email syntax and deliverability. It offers comprehensive validation features including syntax checking, disposable email detection, DNS resolution, and SMTP connection verification.
 
-The software gives requires an email address or a list of them. For each email, the software first checks if the email format is correct, then checks if it is a disposable email, then run through its MX record and then SMTP connection to determine if the email is valid. The software also uses multithreading to process list quicker.
+The software requires an email address or a list of them. For each email, the software first checks if the email format is correct, then checks if it is a disposable email, then run through its MX record and then SMTP connection to determine if the email is valid. The software utilizes multithreading to process a list of email addresses efficiently and quickly.
 
 ## Usage
 
-You can either double click on the Email Validator.exe application, or run main.py. The program will shows a GUI. Browse for the email list \(need to be in .csv format\) that you want to validate and enjoy!
+There are two versions available for running the EmailValidator tool: an executable (.exe) version and a version designed for Google Colab. These versions have slightly different functionalities:
 
-### Installation
+### Executable Version
 
-No installation is required for running EmailValidator.exe.
-
-To run the Python script version of the application, you need to have Python 3.0 or later installed on your system.
-
+1. Double-click the Email Validator.exe file to launch the application (recommended).
+2. To run the Python script version of the application, you need to have Python 3.0 or later installed on your system.
 Additionally, you need to install the required packages by running the following command:
 
 ```python
-$ pip install -r requirements. txt
+$  pip install -r /path/to/requirements.txt
 ```
 
-### Overview
+### Google Colab Version
 
-- `syntax_checker.py` - A function that checks if the email is in the correct format
-- `disposable_checker.py` - Checks if the email is part of one of the many domains where temporaily emails are created.
-- `mx_checker.py` - A function that checks for the domain's MX record
-- `smtp_checker.py` - A function that checks if email is valid via SMTP connection
+1. Open the Google Colab notebook using the following link:
+   https://colab.research.google.com/drive/1NmTPIamL4L-fIJGXGMVh0_WXNK3qxQFl?usp=share_link
+2. In the notebook, you can modify the raw_url variable in the main script to specify your input source. Make sure to use a valid raw GitHub URL for correct execution.
 
----
+## Explaination Video
 
-- `input_parser.py` - turns the input from the GUI to python variable for python scripts
-- `test_case.py` - a list of test cases for the software
+https://www.youtube.com/watch?v=nI3y_7JhcPg
 
 ## Potential Improvements
 
@@ -40,3 +36,6 @@ Here are some potential improvements that could be considered for future develop
 2. Improve the accuracy of gibberish checking by expanding training dataset.
 3. Optimize the multithreading functionality to maximize processing speed while maintaining stability.
 4. Support additional input formats.
+## Results
+
+The validation results for two versions are stored in results folder. For judges, please view those two folders to see results.
