@@ -8,60 +8,25 @@ The software requires an email address or a list of them. For each email, the so
 
 There are two versions available for running the EmailValidator tool: an executable (.exe) version and a version designed for Google Colab. These versions have slightly different functionalities:
 
-    # Executable Version
-    1. Double-click the Email Validator.exe file to launch the application (recommended).
-    2. Alternatively, you can run the main.py file using Python, following the installation instructions provided below.
+### Executable Version
 
-    #Google Colab Version
-    1. Open the provided Google Colab notebook using the following link: 
-    
-    https://colab.research.google.com/drive/1NmTPIamL4L-fIJGXGMVh0_WXNK3qxQFl?usp=share_link
-
-    2. In the notebook, you can modify the raw_url variable in the main script to specify your input source. Make sure to use a valid raw GitHub URL for correct execution.
-
-
-
-### Installation
-
-To use the EmailValidator tool with Python, ensure that you have Python 3.0 or a later version installed on your system. Additionally, install the following dependencies:
-
-Flask: Use the following command to install Flask via pip:
+1. Double-click the Email Validator.exe file to launch the application (recommended).
+2. Alternatively, you can run the main.py file using Python. Remmeber to use the following command to install all packages
 
 ```python
-$ pip install -U Flask
+$  pip install -r /path/to/requirements.txt
 ```
 
-dnspython: Install the DNS toolkit for Python by running the following command:
+### Google Colab Version
 
-```python
-$ pip install dnspython
-```
+1. Open the Google Colab notebook using the following link:
+   https://colab.research.google.com/drive/1NmTPIamL4L-fIJGXGMVh0_WXNK3qxQFl?usp=share_link
+2. In the notebook, you can modify the raw_url variable in the main script to specify your input source. Make sure to use a valid raw GitHub URL for correct execution.
 
-PyQt5: Install PyQt5 library to enable the Graphical User Interface (GUI) functionality:
+### Explaination Video
 
-```python
-$ pip install PyQt5
-```
+https://www.youtube.com/watch?v=nI3y_7JhcPg
 
-gibberish_detector: Install the gibberish_detector library, which is used for detecting disposable email addresses:
+## Results
 
-```python
-$ pip install gibberish_detector
-```
-Once the dependencies are installed, you are ready to run the EmailValidator tool and validate email addresses with ease.
-
-### Overview
-
-- `disposable_checker.py` - Checks if the email is part of one of the many domains where temporaily emails are created.
-- `mx_checker.py` - A function that checks for the domain's MX record
-- `smtp_checker.py` - A function that checks if email is valid via SMTP connection
-- `syntax_checker.py` - A function that checks if the email is in the correct format
-
----
-
-- `input_parser.py` - turns the input from the GUI to python variable for python scripts
-- `test_case.py` - a list of test cases for the software
-
-### Quick Start
-Run main.py and it will shows a GUI. Drag the email list that you want to validate and enjoy!
-
+The validation results for two versions are stored in results folder. For judges, please view those two folders to see results.
